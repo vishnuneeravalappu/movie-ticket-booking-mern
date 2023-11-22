@@ -14,7 +14,9 @@ interface IMovieCard {
   shouldShowRating?: boolean;
 }
 
-export const MovieCard = ({ shouldShowRating = true }) => {
+export const MovieCard: React.FC<IMovieCard> = ({
+  shouldShowRating = true,
+}) => {
   const { classes } = useStyles();
   return (
     <Card className={classes.cardContainer}>

@@ -2,17 +2,16 @@ import React from "react";
 import { useStyles } from "./carousal-styles";
 import classNames from "classnames";
 
-export const CarousalNavbuttons = (
-  showSlides: (_arg: number) => void,
-  slideIndex: number
-) => {
+interface ICarousalNavbuttons {
+  prevSlide: () => void;
+  nextSlide: () => void;
+}
+
+export const CarousalNavbuttons: React.FunctionComponent<
+  ICarousalNavbuttons
+> = ({ nextSlide, prevSlide }) => {
   const { classes } = useStyles();
-  const prevSlide = React.useCallback(() => {
-    showSlides((slideIndex -= 1));
-  }, [showSlides]);
-  const nextSlide = React.useCallback(() => {
-    showSlides((slideIndex += 1));
-  }, [showSlides]);
+
   return (
     <>
       <a className={classes.carousalArrowButton} onClick={prevSlide}>

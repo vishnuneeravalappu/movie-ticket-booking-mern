@@ -1,27 +1,23 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
+import React from "react";
 import { useStyles } from "./carousal-styles";
-import classNames from "classnames";
+interface ICarousalDots {
+  length: number;
+}
 
-export const CarousalNavbuttons = (
-  showSlides: (_arg: number) => void,
-  slideIndex: number
-) => {
+export const CarousalDots: React.FC<ICarousalDots> = ({ length }) => {
   const { classes } = useStyles();
-  const currentSlide = React.useCallback(
-    (
-      event: DetailedHTMLProps<
-        HTMLAttributes<HTMLSpanElement>,
-        HTMLSpanElement
-      >,
-      index: number
-    ) => {
-      showSlides(index);
-    },
-    [showSlides]
-  );
+  const array = [1, 2, 3];
+  // const currentSlide = React.useCallback(
+  //   (event: MouseEventHandler<HTMLSpanElement>, index: number) => {
+  //     showSlides(index);
+  //   },
+  //   [showSlides]
+  // );
   return (
-    <div style="text-align:center">
-      <span className={} onClick={currentSlide((index = slideIndex))}></span>
+    <div className={classes.dotsContainer}>
+      {array.map((item) => {
+        return <span key={item.toString()} className={classes.dots}></span>;
+      })}
     </div>
   );
 };
